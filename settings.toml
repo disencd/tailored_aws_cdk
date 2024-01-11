@@ -1,7 +1,6 @@
 [global]
 aws_account = "784670903014"
 aws_region = "us-west-1"
-username = "MrGreenHorn"
-password = "JEc5x2vRRWXB"
-group = "GreenHornsClub"
+role = "GreenHornsRole"
 policy = "GreenHornsPolicy"
+s3_bucket = "AmaturesWallet"
