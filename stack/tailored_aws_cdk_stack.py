@@ -43,3 +43,10 @@ class TailoredAwsCdkStack(Stack):
                                                                    "application/json": '{ "statusCode": "200" }'})
 
         api.root.add_method("GET", get_widgets_integration)  # GET /
+
+        widget = api.root.add_resource("{id}")
+
+        widget_integration = apigateway.LambdaIntegration(handler)
+        widget.add_method("POST", widget_integration)   # POST /{id}
+        widget.add_method("GET", widget_integration)    # GET /{id}
+        widget.add_method("DELETE", widget_integration) # DELETE /{id}
