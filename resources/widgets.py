@@ -16,10 +16,10 @@ def lambda_handler(event, context):
         if method == "GET":
             if event['path'] == "/":
                 body = 'No Data'
-                data = s3.list_objects_v2(Bucket=bucket_name)
-                if data.get('Contents', False):
+                data = s3.list_objects(Bucket=bucket_name)
+                if data.get('Body', False):
                     body = {
-                        'widgets': [entry['Key'] for entry in data['Contents']]
+                        'widgets': [entry['Key'] for entry in data['Body']]
                     }
                 print(f"[body : {body}] [data : {data}]")
                 return {
@@ -31,7 +31,7 @@ def lambda_handler(event, context):
             if widget_name:
                 body = f'{widget_name} Not found'
                 data = s3.get_object(Bucket=bucket_name, Key=widget_name)
-                if data.get('Contents', False):
+                if data.get('Body', False):
                     body = data['Body'].read().decode('utf-8')
 
                 return {
