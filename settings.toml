@@ -2,5 +2,7 @@
 aws_account = "784670903014"
 aws_region = "us-west-1"
 role = "GreenHornsRole"
+user = "Ballerina"
 policy = "GreenHornsPolicy"
 s3_bucket = "AmaturesWallet"
+vpc = "ClubHouse"

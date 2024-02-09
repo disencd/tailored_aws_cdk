@@ -4,24 +4,13 @@ from aws_cdk import (
     aws_apigateway as apigateway,
     aws_lambda as lambda_
 )
-from dataclasses import dataclass
-import aws_cdk.aws_iam as iam
+
 from constructs import Construct
-
-
-@dataclass
-class CDKProps:
-    """
-    Stack Props
-    """
-    role: str
-    policy: str
-    s3_bucket: str
 
 
 class TailoredAwsCdkStack(Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, cdk_props: CDKProps, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         bucket = s3.Bucket(self, "WidgetStore")
@@ -47,6 +36,6 @@ class TailoredAwsCdkStack(Stack):
         widget = api.root.add_resource("{id}")
 
         widget_integration = apigateway.LambdaIntegration(handler)
-        widget.add_method("POST", widget_integration)   # POST /{id}
-        widget.add_method("GET", widget_integration)    # GET /{id}
-        widget.add_method("DELETE", widget_integration) # DELETE /{id}
+        widget.add_method("POST", widget_integration)  # POST /{id}
+        widget.add_method("GET", widget_integration)  # GET /{id}
+        widget.add_method("DELETE", widget_integration)  # DELETE /{id}
