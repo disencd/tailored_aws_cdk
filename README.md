@@ -1,7 +1,10 @@
 
-# Welcome to your CDK Python project!
+# Tailored AWS CDK Project !
 
-This is a blank project for CDK development with Python.
+This is a tailored cdk project exploring the power of IAM, EC2, ECS, Lambda using aws cdk
+
+Understanding CDK
+-----------------
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
